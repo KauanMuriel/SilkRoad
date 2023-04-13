@@ -18,12 +18,18 @@ namespace Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<GestaoContext>(option => {
+            builder.Services.AddDbContext<GestaoContext>(option =>
+            {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             builder.Services.AddScoped<DriverRepository>();
-            
+
+            builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+            {
+                builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+            }));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -39,6 +45,8 @@ namespace Backend
 
 
             app.MapControllers();
+
+            app.UseCors("corsapp");
 
             app.Run();
         }

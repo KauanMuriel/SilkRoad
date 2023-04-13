@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="item col-8">
                     <label for="input-name">Nome</label>
-                    <input type="text" id="input-name">
+                    <input type="text" id="input-name" v-model="driver.name">
                 </div>
                 <div class="item col-4">
                     <label for="input-phone">Telefone</label>
@@ -17,17 +17,21 @@
             <div class="row">
                 <div class="item col-4">
                     <label for="input-cpf">CPF</label>
-                    <input type="text" id="input-cpf">
+                    <input type="text" id="input-cpf" v-model="driver.CPF">
                 </div>
                 <div class="item col-4">
                     <label for="input-cnh">CNH</label>
-                    <input type="text" id="input-cnh">
+                    <input type="text" id="input-cnh" v-model="driver.CNH">
+                </div>
+                <div class="item col-4">
+                    <label for="input-admin">Admin</label>
+                    <input type="checkbox" id="input-cnh" v-model="driver.Admin">
                 </div>
             </div>
         </form>
         <div id="actions-form">
             <button class="btn btn-danger" @click="$router.back()">Cancelar</button>
-            <button class="btn btn-success">Cadastrar</button>
+            <button class="btn btn-success" @click="registerDriver" >Cadastrar</button>
         </div>
     </card-base>
 </template>
@@ -35,18 +39,38 @@
 <script>
 import ButtonBase from './ButtonBase.vue';
 import CardBase from './CardBase.vue';
+import DriverDataService from '../../services/DriverDataService';
 
 export default {
     data() {
         return {
-
+            DriverDataService,
+            driver : {
+                name: "",
+                CPF: "",
+                CNH: "",
+                Admin: false
+            }
         }
     },
     components: {
         ButtonBase,
         CardBase
     },
-    props: ['title']
+    props: ['title'],
+    methods: {
+        registerDriver()
+        {
+            const data = {
+                name: this.driver.name,
+                CPF: this.driver.CPF,
+                CNH: this.driver.CNH,
+                Admin: this.driver.Admin
+            };
+
+            DriverDataService.register(data);
+        }
+    }
 }
 </script>
 
