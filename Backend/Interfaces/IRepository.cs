@@ -7,8 +7,12 @@ using Backend.Models.Entities;
 
 namespace Backend.Interfaces
 {
-    public interface IDriverRepository
+    public interface IRepository<T> where T : class
     {
+        List<Driver> GetAll();
         Driver GetById(int id);
+        Driver Update(IEntityBase entity);
+        void Delete(IEntityBase entity);
+        void Register(IEntityBase entity);
     }
 }

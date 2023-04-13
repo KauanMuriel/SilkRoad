@@ -5,7 +5,7 @@ namespace Backend.Context
 {
     public class GestaoContext : DbContext
     {
-        GestaoContext(DbContextOptions options) : base(options) 
+        public GestaoContext(DbContextOptions options) : base(options) 
         {
         }
 
