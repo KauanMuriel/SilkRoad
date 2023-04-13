@@ -11,7 +11,7 @@
         <nav>
             <ul>
                 <li>
-                    <RouterLink to="/driver" class="item-link">
+                    <RouterLink to="/vehicle/register" class="item-link">
                         <span class="material-symbols-outlined">
                             local_shipping
                         </span>
@@ -19,7 +19,7 @@
                     </RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/driver" class="item-link">
+                    <RouterLink to="/driver/register" class="item-link">
                         <span class="material-symbols-outlined">
                             groups
                         </span>
@@ -27,7 +27,7 @@
                     </RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/driver" class="item-link">
+                    <RouterLink to="/driver/register" class="item-link">
                         <span class="material-symbols-outlined">
                             bar_chart
                         </span>
@@ -35,7 +35,7 @@
                     </RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/driver" class="item-link">
+                    <RouterLink to="/driver/register" class="item-link">
                         <span class="material-symbols-outlined">
                             map
                         </span>Mapa

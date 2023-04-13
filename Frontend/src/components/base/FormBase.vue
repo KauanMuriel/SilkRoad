@@ -1,80 +1,41 @@
 <template>
-    <card-base>
+        <card-base>
         <div id="title-div">
             <h2>{{ title }}</h2>
         </div>
         <form action="">
-            <div class="row">
-                <div class="item col-8">
-                    <label for="input-name">Nome</label>
-                    <input type="text" id="input-name" v-model="driver.name">
-                </div>
-                <div class="item col-4">
-                    <label for="input-phone">Telefone</label>
-                    <input type="text" id="input-phone">
-                </div>
-            </div>
-            <div class="row">
-                <div class="item col-4">
-                    <label for="input-cpf">CPF</label>
-                    <input type="text" id="input-cpf" v-model="driver.CPF">
-                </div>
-                <div class="item col-4">
-                    <label for="input-cnh">CNH</label>
-                    <input type="text" id="input-cnh" v-model="driver.CNH">
-                </div>
-                <div class="item col-4">
-                    <label for="input-admin">Admin</label>
-                    <input type="checkbox" id="input-cnh" v-model="driver.Admin">
-                </div>
-            </div>
-        </form>
-        <div id="actions-form">
-            <button class="btn btn-danger" @click="$router.back()">Cancelar</button>
-            <button class="btn btn-success" @click="registerDriver" >Cadastrar</button>
-        </div>
-    </card-base>
+        <slot name="form-body">
+
+        </slot>
+    </form>
+    <div id="actions-form">
+            <button class="btn btn-danger" @click="result(false)">Cancelar</button>
+            <button class="btn btn-success" @click="result(true)" >Cadastrar</button>
+        </div>        
+</card-base>
+        
 </template>
 
 <script>
-import ButtonBase from './ButtonBase.vue';
 import CardBase from './CardBase.vue';
-import DriverDataService from '../../services/DriverDataService';
 
 export default {
-    data() {
-        return {
-            DriverDataService,
-            driver : {
-                name: "",
-                CPF: "",
-                CNH: "",
-                Admin: false
-            }
-        }
-    },
     components: {
-        ButtonBase,
         CardBase
     },
     props: ['title'],
+    emits: ['confirmation'],
     methods: {
-        registerDriver()
-        {
-            const data = {
-                name: this.driver.name,
-                CPF: this.driver.CPF,
-                CNH: this.driver.CNH,
-                Admin: this.driver.Admin
-            };
-
-            DriverDataService.register(data);
+        result(response) {
+            this.$emit("confirmation", {
+                response : response
+            });
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
     #title-div {
         width: 100%;
         height: 10%;
@@ -116,4 +77,4 @@ export default {
         height: 70%;
         margin: 0 1% 0 0.5%;
     }
-</style>
+    </style>
