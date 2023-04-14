@@ -24,6 +24,7 @@ namespace Backend
             });
 
             builder.Services.AddScoped<DriverRepository>();
+            builder.Services.AddScoped<BrandRepository>();
 
             builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
             {

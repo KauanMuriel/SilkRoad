@@ -1,7 +1,7 @@
 <template>
     <card-base>
         <div id="title-div">
-            <h2>{{ title }}</h2>
+            <h2>Novo motorista</h2>
         </div>
         <form action="">
             <div class="row">
