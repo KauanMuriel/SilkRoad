@@ -1,11 +1,13 @@
 <template>
-    <form-base title="Nova marca" @confirmation="registerNew()">
-        <div class="row">
-            <div class="item">
-                <label for="input-name">Nome</label>
-                <input type="text" name="input-name" id="input-name">
+    <form-base title="Nova marca" @confirmation="registerNew">
+        <template #form-body>
+            <div class="row">
+                <div class="item col-12">
+                    <label for="input-name">Nome</label>
+                    <input type="text" name="input-name" id="input-name" v-model="brand.name">
+                </div>
             </div>
-        </div>
+        </template>
     </form-base >
 </template>
 
@@ -19,12 +21,20 @@ export default {
     },
     data() {
         return {
-
+            brand : {
+                name : ''
+            }
         }
     },
     methods: {
-        registerNew(response) {
-            
+        registerNew(confirmation) {
+            if(confirmation.response) {
+                const data = {
+                    name : this.brand.name
+                }
+
+                service.register(data);
+            }
         }
     }
 }

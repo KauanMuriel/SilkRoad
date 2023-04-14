@@ -7,22 +7,30 @@
                     <input type="text" name="input-renavam" id="input-renavam">
                 </div>
                 <div class="item col-4">
-                    <label for="input-placa">Placa</label>
-                    <input type="text" name="input-placa" id="input-placa">
+                    <label for="input-sign">Placa</label>
+                    <input type="text" name="input-sign" id="input-sign">
                 </div>
                 <div class="item col-4">
-                    <label for="input-ano-modelo">Ano do modelo</label>
-                    <input type="date" name="input-ano-modelo" id="input-ano-modelo">
+                    <label for="input-model-year">Ano do modelo</label>
+                    <input type="date" name="input-model-year" id="input-model-year">
                 </div>
             </div>
             <div class="row">
-                <div class="item col-6">
-                    <label for="input-tipo">Ano de entrada</label>
-                    <input type="date" name="input-tipo" id="input-tipo">
+                <div class="item col-3">
+                    <label for="input-entry-year">Ano de entrada</label>
+                    <input type="date" name="input-entry-year" id="input-entry-year">
                 </div>
-                <div class="item col-6">
-                    <label for="input-tipo">Modelo</label>
-                    <input type="text" name="input-tipo" id="input-tipo">
+                <div class="item col-4">
+                    <label for="input-brand">Marca</label>
+                    <select name="brands" id="brands" @click="getBrands" v-model="brandSelected">
+                        <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
+                    </select>
+                </div>
+                <div class="item col-5">
+                    <label for="input-model">Modelo</label>
+                    <select name="models" id="models" :value="brandSelected">
+
+                    </select>
                 </div>
             </div>
         </template>
@@ -31,15 +39,33 @@
 
 <script>
 import FormBase from '../../components/base/FormBase.vue';
+import BrandService from '../../services/BrandDataService';
 
 export default {
     data() {
         return {
-
+            brands: [],
+            brandSelected: null
         }
     },
     components: {
         FormBase
+    },
+    methods: {
+        async getBrands() {
+            if (this.brands.length <= 0) {
+                BrandService.list().then(response => {
+                    this.brands = response.data;
+                });
+            }
+        }
     }
 }
 </script>
+
+<style scoped>
+
+select {
+        height: 3.5vh
+    }
+</style>

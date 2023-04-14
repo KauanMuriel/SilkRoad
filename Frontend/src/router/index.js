@@ -25,6 +25,10 @@ const router = createRouter({
     {
       path: '/vehicle/register',
       component: () => import('../views/Vehicle/Register.vue')
+    },
+    {
+      path: '/brand/register',
+      component: () => import('../views/Brand/Register.vue')
     }
   ]
 })
