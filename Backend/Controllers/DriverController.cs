@@ -58,5 +58,17 @@ namespace Backend.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id) {
+            var vehicle = _repository.GetById(id);
+
+            if (vehicle is not null) {
+                _repository.Delete(vehicle);
+                return NoContent();
+            }
+            else {
+                return NotFound(new { message = "Driver not found"});
+            }
+        }
     }
 }

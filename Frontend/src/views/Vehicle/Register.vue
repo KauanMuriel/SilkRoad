@@ -1,5 +1,5 @@
 <template>
-    <form-base title="Novo veículo">
+    <form-base title="Novo veículo" @confirmation="registerNew">
         <template #form-body>
             <div class="row">
                 <div class="item col-4">
@@ -22,14 +22,14 @@
                 </div>
                 <div class="item col-4">
                     <label for="input-brand">Marca</label>
-                    <select name="brands" id="brands" @click="getBrands" v-model="brandSelected">
-                        <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
+                    <select name="input-brands" id="input-brands" class="col-12" v-model="brandSelected" @click="getBrands">
+                        <option v-for="brand in brands" :value="brand.id" :key="brand.id">{{ brand.name }}</option>
                     </select>
                 </div>
                 <div class="item col-5">
                     <label for="input-model">Modelo</label>
-                    <select name="models" id="models" :value="brandSelected">
-
+                    <select name="input-models" id="input-models" class="col-12" v-model="modelSelected" @click="getModels">
+                        <option v-for="model in modelsOfBrand" :value="model.id" :key="model.id">{{ model.name }}</option>
                     </select>
                 </div>
             </div>
@@ -40,24 +40,46 @@
 <script>
 import FormBase from '../../components/base/FormBase.vue';
 import BrandService from '../../services/BrandDataService';
+import ModelService from '../../services/ModelDataService';
+import VehicleService from '../../services/VehicleDataService';
 
 export default {
     data() {
         return {
             brands: [],
-            brandSelected: null
+            models: [],
+            modelsOfBrand: [],
+            brandSelected: null,
+            modelSelected: null
         }
     },
     components: {
         FormBase
     },
     methods: {
-        async getBrands() {
+        getBrands() {
             if (this.brands.length <= 0) {
                 BrandService.list().then(response => {
                     this.brands = response.data;
                 });
             }
+        },
+        async getModels() {
+            if (this.models.length <= 0) {
+                await ModelService.list().then(response => {
+                    this.models = response.data;
+                })
+            }
+            this.groupModelsOfBrand();
+        },
+        groupModelsOfBrand() {
+            this.modelsOfBrand = this.models.filter(model => model.brandId == this.brandSelected);
+        },
+        registerNew() {
+            const data = {
+                
+            }
+            VehicleService.register(ve)
         }
     }
 }

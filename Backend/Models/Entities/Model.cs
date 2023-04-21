@@ -1,4 +1,6 @@
-﻿namespace Backend.Models.Entities
+﻿using Backend.Models.Dto;
+
+namespace Backend.Models.Entities
 {
     public class Model
     {
@@ -9,7 +11,11 @@
 
         public Model()
         {
+        }
 
+        public Model(RegisterModelDTO dto) {
+            Name = dto.Name;
+            BrandId = dto.BrandId;
         }
 
     }
