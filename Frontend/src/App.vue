@@ -3,28 +3,21 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-
-  <div id="central-div">
-    
     <TheHeader/>
 
     <main class="wrapper">
       <RouterView />
     </main>
 
-  </div>
-
-    <TheFooter/>
 </template>
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
-import TheFooter from './components/layout/TheFooter.vue';
+
 
 export default {
   components: {
-    TheHeader,
-    TheFooter
+    TheHeader
   }
 }
 </script>
@@ -41,13 +34,13 @@ export default {
 
   #central-div {
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
     display: flex;
   }
 
   .wrapper {
     height: 100%;
-    width: 85%;
+    width: 100%;
     background-color: #495579;
     display: flex;
     justify-content: center;
@@ -57,6 +50,9 @@ export default {
   #app {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #495579;
   }
 
 </style>
