@@ -41,7 +41,6 @@ export default {
   .wrapper {
     height: 100%;
     width: 100%;
-    background-color: #495579;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +51,7 @@ export default {
     flex-direction: column;
     overflow: hidden;
     height: 100vh;
-    background-color: #495579;
+    background-color: #2f3e46;
   }
 
 </style>

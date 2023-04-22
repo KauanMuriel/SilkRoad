@@ -1,5 +1,7 @@
 <template>
-    <card-base></card-base>
+    <card-base>
+        
+    </card-base>
 </template>
 
 <script>

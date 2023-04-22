@@ -12,6 +12,10 @@ const router = createRouter({
       component: () => import('../views/Driver/Register.vue')
     },
     {
+      path: '/driver/all',
+      component: () => import('../views/Driver/List.vue')
+    },
+    {
       path: '/vehicle/register',
       component: () => import('../views/Vehicle/Register.vue')
     },
@@ -20,6 +24,6 @@ const router = createRouter({
       component: () => import('../views/Brand/Register.vue')
     }
   ]
-})
+});
 
 export default router

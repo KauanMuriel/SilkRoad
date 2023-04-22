@@ -94,15 +94,19 @@ button {
 .link-route {
     font-size: 20px;
     text-decoration: none;
-    color: #FFFBEB;
+    color: #f4f1de;
 }
 
 .link-route:hover {
-    color: #dadada;
+    color: #c9c9c9;
 }
 
 .link-dropdown {
     color: #414141;
+}
+
+.dropdown-menu {
+    background-color: #f4f1de;
 }
 
 #list-links {

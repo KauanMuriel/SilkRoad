@@ -8,7 +8,7 @@
     #card {
         height: 80vh;
         width: 60vw;
-        background-color: #FFFBEB;
+        background-color: #f4f1de;
         border-radius: 12px;
         display: flex;
         justify-content: center;
