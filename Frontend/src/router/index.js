@@ -20,8 +20,8 @@ const router = createRouter({
       component: () => import('../views/Vehicle/Register.vue')
     },
     {
-      path: '/brand/register',
-      component: () => import('../views/Brand/Register.vue')
+      path: '/model/all',
+      component: () => import('../views/Model/List.vue')
     }
   ]
 });

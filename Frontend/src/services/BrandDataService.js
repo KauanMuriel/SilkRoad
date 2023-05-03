@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class BrandDataService {
     list() {
-        return http.get("/brand/GetAll");
+        return http.get("/brand/all");
     }
 
     register(brand) {

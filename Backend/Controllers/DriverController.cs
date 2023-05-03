@@ -35,7 +35,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("all")]
         public IActionResult GetAll()
         {
             var drivers = _repository.GetAll();

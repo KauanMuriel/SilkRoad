@@ -21,7 +21,7 @@
                 <li class="item-link">
                     <div>
                         <button type="button">
-                            <router-link class="link-route" to="/map">Mapa</router-link>
+                            <router-link class="link-route" to="/">Mapa</router-link>
                         </button>
                     </div>
                 </li>
@@ -31,9 +31,10 @@
                             Veículos
                         </button>
                         <ul class="dropdown-menu">
-                            <li><router-link class="dropdown-item link-dropdown" to="/vehicle/all">Visualizar</router-link>
+                            <li><router-link class="dropdown-item link-dropdown" to="/vehicle/register">Visualizar</router-link>
                             </li>
                             <li><router-link class="dropdown-item link-dropdown" to="/vehicle/register">Cadastrar</router-link></li>
+                            <li><router-link class="dropdown-item link-dropdown" to="/model/all">Modelos/Marcas</router-link></li>
                         </ul>
                     </div>
                 </li>

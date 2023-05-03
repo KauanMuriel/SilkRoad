@@ -20,7 +20,7 @@ namespace Backend.Controllers
             _repository = repository;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("all")]
         public IActionResult GetAll()
         {
             var brands = _repository.GetAll();
