@@ -20,6 +20,10 @@ const router = createRouter({
       component: () => import('../views/Vehicle/Register.vue')
     },
     {
+      path: '/vehicle/all',
+      component: () => import('../views/Vehicle/List.vue')
+    },
+    {
       path: '/model/all',
       component: () => import('../views/Model/List.vue')
     }

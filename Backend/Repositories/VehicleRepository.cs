@@ -11,11 +11,13 @@ namespace Backend.Repositories
     {
         private readonly GestaoContext _context;
 
-        VehicleRepository(GestaoContext context) {
+        public VehicleRepository(GestaoContext context)
+        {
             _context = context;
         }
 
-        public void Register(Vehicle vehicle) {
+        public void Register(Vehicle vehicle)
+        {
             _context.Vehicles.Add(vehicle);
             _context.SaveChanges();
         }
@@ -24,7 +26,8 @@ namespace Backend.Repositories
 
         public List<Vehicle> GetAll() => _context.Vehicles.ToList();
 
-        public void Delete(Vehicle vehicle) {
+        public void Delete(Vehicle vehicle)
+        {
             _context.Vehicles.Remove(vehicle);
             _context.SaveChanges();
         }

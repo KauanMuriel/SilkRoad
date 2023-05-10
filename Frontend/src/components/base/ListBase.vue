@@ -3,25 +3,7 @@
         <slot name="list-body">
             <table class="table">
                 <table-head :collection="collection"></table-head>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
+                <table-body :collection="collection"></table-body>
             </table>
         </slot>
     </card-base>
@@ -30,11 +12,13 @@
 <script>
 import CardBase from './CardBase.vue';
 import TableHead from '../utilities/TableHead.vue';
+import TableBody from '../utilities/TableBody.vue';
 
 export default {
     components: {
         CardBase,
-        TableHead
+        TableHead,
+        TableBody
     },
     data() {
         return {
@@ -54,10 +38,16 @@ export default {
             });
         }
     },
-    created() {
-        this.getCollection();
-    },
     mounted() {
+        this.getCollection();
     }
 }
 </script>
+
+<style scoped>
+.table {
+    width: 80%;
+}
+
+
+</style>

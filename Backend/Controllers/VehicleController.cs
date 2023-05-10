@@ -15,7 +15,7 @@ namespace Backend.Controllers
     {
         private readonly VehicleRepository _repository;
 
-        VehicleController(VehicleRepository repository)
+        public VehicleController(VehicleRepository repository)
         {
             _repository = repository;
         }
