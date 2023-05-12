@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Backend.Context;
 using Backend.Interfaces;
+using Backend.Models.Dto.Driver;
 using Backend.Models.Entities;
 
 namespace Backend.Repositories

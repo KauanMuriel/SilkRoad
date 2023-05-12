@@ -3,21 +3,14 @@
         <tr v-for="item in collection">
             <td v-for="data in item">{{ data }}</td>
         </tr>
+        <tr v-if="!collection.length">
+            <td>There is no data to display! Register at least one element.</td>
+        </tr>
     </tbody>
 </template>
 
 <script>
 export default {
-    props: ['collection'],
-    computed: {
-        colDatas() {
-            const item = this.collection[0];
-            let names = [];
-            for (let i = 0; i < item.length; i++) {
-                names.push(item[i]);
-            } 
-            return names;
-        }
-    }
+    props: ['collection']
 }
 </script>

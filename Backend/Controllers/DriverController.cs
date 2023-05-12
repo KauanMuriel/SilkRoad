@@ -27,7 +27,7 @@ namespace Backend.Controllers
 
             if (driver is not null)
             {
-                return Ok(driver);
+                return Ok(new GetDriverDTO(driver));
             }
             else
             {
@@ -42,7 +42,12 @@ namespace Backend.Controllers
             
             if(drivers is not null)
             {
-                return Ok(drivers);
+                var driversFormated = new List<GetDriverDTO>();
+
+                foreach (var driver in drivers) {
+                    driversFormated.Add(new GetDriverDTO(driver));
+                }
+                return Ok(driversFormated);
             }
             else
             {

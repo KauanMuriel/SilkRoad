@@ -4,21 +4,21 @@
             <div class="row">
                 <div class="item col-4">
                     <label for="input-renavam">Renavam</label>
-                    <input type="text" name="input-renavam" id="input-renavam">
+                    <input type="text" name="input-renavam" id="input-renavam" v-model="renavam">
                 </div>
                 <div class="item col-4">
                     <label for="input-sign">Placa</label>
-                    <input type="text" name="input-sign" id="input-sign">
+                    <input type="text" name="input-sign" id="input-sign" v-model="plate">
                 </div>
                 <div class="item col-4">
                     <label for="input-model-year">Ano do modelo</label>
-                    <input type="date" name="input-model-year" id="input-model-year">
+                    <input type="date" name="input-model-year" id="input-model-year" v-model="modelYear">
                 </div>
             </div>
             <div class="row">
                 <div class="item col-3">
                     <label for="input-entry-year">Ano de entrada</label>
-                    <input type="date" name="input-entry-year" id="input-entry-year">
+                    <input type="date" name="input-entry-year" id="input-entry-year" v-model="entryYear">
                 </div>
                 <div class="item col-4">
                     <label for="input-brand">Marca</label>
@@ -50,7 +50,11 @@ export default {
             models: [],
             modelsOfBrand: [],
             brandSelected: null,
-            modelSelected: null
+            modelSelected: null,
+            renavam: null,
+            plate: null,
+            modelYear: null,
+            entryYear: null
         }
     },
     components: {
@@ -77,9 +81,13 @@ export default {
         },
         registerNew() {
             const data = {
-                
-            }
-            VehicleService.register(ve)
+                renavam: this.renavam,
+                plate: this.plate,
+                year: this.modelYear,
+                entryDate: this.entryYear,
+                modelId: this.modelSelected.id
+            };
+            VehicleService.register(data);
         }
     }
 }
