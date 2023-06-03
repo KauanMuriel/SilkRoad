@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 
 <template>
     <TheHeader/>
-
+    <LoginPage v-if="!isUserAuthenticated" @authentication="toggleAuthentication"/>
     <main class="wrapper">
       <RouterView />
     </main>
@@ -13,11 +13,22 @@ import { RouterView } from 'vue-router'
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
-
+import LoginPage from './views/LoginView.vue';
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    LoginPage
+  },
+  data() {
+    return {
+      isUserAuthenticated: false
+    }
+  },
+  methods: {
+    toggleAuthentication() {
+      this.isUserAuthenticated = true;
+    }
   }
 }
 </script>
